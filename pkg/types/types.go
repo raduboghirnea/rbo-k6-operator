@@ -177,7 +177,7 @@ func ParseCLI(spec *v1alpha1.K6Spec) *CLI {
 				if len(cli.ArchiveArgs) > 0 {
 					cli.ArchiveArgs += " "
 				}
-				cli.ArchiveArgs += strings.Join(args[i:end], " ")
+				cli.ArchiveArgs += strings.Join(args[i:end], " XXX")
 			}
 			i = end
 		}
