@@ -34,7 +34,7 @@ var (
 // InitializeJobs creates jobs that will run initial checks for distributed test if any are necessary
 func InitializeJobs(ctx context.Context, log logr.Logger, k6 *v1alpha1.K6, r *K6Reconciler) (res ctrl.Result, err error) {
 	log.Info("Initialize test")
- log.Info("rbo test to see if customize code makes it to kubernetes")
+ log.Info("RADUBO patch the out LOG file to kubernetes")
 	log.Info("Changing stage of K6 status to initialization")
 	k6.Status.Stage = "initialization"
 	if err = r.Client.Status().Update(ctx, k6); err != nil {
@@ -48,9 +48,9 @@ func InitializeJobs(ctx context.Context, log logr.Logger, k6 *v1alpha1.K6, r *K6
 	if initializer, err = jobs.NewInitializerJob(k6, cli.ArchiveArgs); err != nil {
 		return res, err
 	}
-
+        comand:= initializer.Spec.Template.Spec.Containers[0].Command
 	log.Info(fmt.Sprintf("Initializer job is ready to start with image `%s` and command `%s`",
-		initializer.Spec.Template.Spec.Containers[0].Image, initializer.Spec.Template.Spec.Containers[0].Command))
+		initializer.Spec.Template.Spec.Containers[0].Image, comand))
 
 	if err = ctrl.SetControllerReference(k6, initializer, r.Scheme); err != nil {
 		log.Error(err, "Failed to set controller reference for the initialize job")
