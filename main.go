@@ -68,13 +68,13 @@ func main() {
 		os.Exit(1)
 	}
 
-	if err = (
-                &controllers.K6Reconciler{
+//	if err = (
+	err=    &controllers.K6Reconciler{
 		Client: mgr.GetClient(),
 		Log:    ctrl.Log.WithName("controllers").WithName("K6"),
 		Scheme: mgr.GetScheme(),
-	}) {log.Info("ceva")}
-//    .SetupWithManager(mgr); err != nil {
+	}
+	//    .SetupWithManager(mgr); err != nil {
 //		setupLog.Error(err, "unable to create controller", "controller", "K6")
 //		os.Exit(1)
 //	}
