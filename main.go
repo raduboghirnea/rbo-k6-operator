@@ -68,16 +68,15 @@ func main() {
 		os.Exit(1)
 	}
 
-//	if err = (
-	err=    &controllers.K6Reconciler{
+	if err = (
+	        &controllers.K6Reconciler{
 		Client: mgr.GetClient(),
 		Log:    ctrl.Log.WithName("controllers").WithName("K6"),
 		Scheme: mgr.GetScheme(),
+	}.SetupWithManager(mgr); err != nil {
+		setupLog.Error(err, "unable to create controller", "controller", "K6")
+		os.Exit(1)
 	}
-	//    .SetupWithManager(mgr); err != nil {
-//		setupLog.Error(err, "unable to create controller", "controller", "K6")
-//		os.Exit(1)
-//	}
 	// +kubebuilder:scaffold:builder
 
 	setupLog.Info("starting manager")
