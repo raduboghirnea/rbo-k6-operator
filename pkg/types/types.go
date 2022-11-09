@@ -162,8 +162,10 @@ func ParseCLI(spec *v1alpha1.K6Spec) *CLI {
 						cli.HasCloudOut = true
 					} else {
                                           str, err := os.Hostname()
-                                         fmt.Printf("err: %T, %v\n", err, err) 
+                                         fmt.Printf("erroarea este: %T, %v\n", err, err)
+					 fmt.Printf("string is , %s",str)
                                           args[j] = args[j]+str
+					 fmt.Printf("args de j este : %s",args[j])
 					}
 				}
 			case "-l", "--linger", "--no-usage-report":
@@ -175,7 +177,7 @@ func ParseCLI(spec *v1alpha1.K6Spec) *CLI {
 				break
 			default:
 				if len(cli.ArchiveArgs) > 0 {
-					cli.ArchiveArgs += " "
+					cli.ArchiveArgs += " YYY"
 				}
 				cli.ArchiveArgs += strings.Join(args[i:end], " XXX")
 			}
