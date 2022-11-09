@@ -10,9 +10,9 @@ require (
 	github.com/sirupsen/logrus v1.9.0
 	github.com/stretchr/testify v1.8.1
 	go.k6.io/k6 v0.41.0
-	k8s.io/api v0.25.3
+	k8s.io/api v0.18.6
         k8s.io/apimachinery v0.18.6	
-        k8s.io/client-go v0.25.3
+        k8s.io/client-go v0.18.6
 	sigs.k8s.io/controller-runtime v0.13.1
 )
 
