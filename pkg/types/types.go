@@ -163,9 +163,9 @@ func ParseCLI(spec *v1alpha1.K6Spec) *CLI {
 					} else {
                                           str, err := os.Hostname()
                                          fmt.Printf("erroarea este: %T, %v\n", err, err)
-					 fmt.Printf("string is , %s",str)
-                                          args[j] = args[j]+str
-					 fmt.Printf("args de j este : %s",args[j])
+					 fmt.Printf("string is , %s\n",str)
+                                          args[j+1] = args[j+1]+"--instance-id--"
+					 fmt.Printf("args de j+1 este : %s\n",args[j+1])
 					}
 				}
 			case "-l", "--linger", "--no-usage-report":
