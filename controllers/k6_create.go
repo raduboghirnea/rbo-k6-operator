@@ -68,9 +68,8 @@ func launchTest(ctx context.Context, k6 *v1alpha1.K6, index int, log logr.Logger
 		return err
 	}
         comand := job.Spec.Template.Spec.Containers[0].Command
-	comanda := *comand + string("IINNDDEEXXUULL ESTEE-") + string(strconv.Itoa(index))
 	log.Info(fmt.Sprintf("Runner job is ready to start with image `%s` and command `%s`",
-		job.Spec.Template.Spec.Containers[0].Image, comanda))
+		job.Spec.Template.Spec.Containers[0].Image, comand))
 
 	if err = ctrl.SetControllerReference(k6, job, r.Scheme); err != nil {
 		log.Error(err, "Failed to set controller reference for job")
