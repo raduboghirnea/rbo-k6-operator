@@ -20,7 +20,7 @@ import (
 
 	"github.com/go-logr/logr"
 	"github.com/raduboghirnea/rbo-k6-operator/api/v1alpha1"
-//	batchv1 "k8s.io/api/batch/v1"
+	batchv1 "k8s.io/api/batch/v1"
 	"k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
