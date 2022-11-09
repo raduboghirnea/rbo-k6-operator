@@ -34,7 +34,7 @@ var (
 // InitializeJobs creates jobs that will run initial checks for distributed test if any are necessary
 func InitializeJobs(ctx context.Context, log logr.Logger, k6 *v1alpha1.K6, r *K6Reconciler) (res ctrl.Result, err error) {
 	log.Info("Initialize test")
-
+ log.Info("rbo test to see if customize code makes it to kubernetes")
 	log.Info("Changing stage of K6 status to initialization")
 	k6.Status.Stage = "initialization"
 	if err = r.Client.Status().Update(ctx, k6); err != nil {
