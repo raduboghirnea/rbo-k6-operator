@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"path/filepath"
 	"strings"
-
+        "os"
 	"github.com/raduboghirnea/rbo-k6-operator/api/v1alpha1"
 	corev1 "k8s.io/api/core/v1"
 )
@@ -160,6 +160,8 @@ func ParseCLI(spec *v1alpha1.K6Spec) *CLI {
 				for j := 0; j < end; j++ {
 					if args[j] == "cloud" {
 						cli.HasCloudOut = true
+					} else {
+                                          args[j] = args[j]+os.Hostname()
 					}
 				}
 			case "-l", "--linger", "--no-usage-report":
