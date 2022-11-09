@@ -161,7 +161,9 @@ func ParseCLI(spec *v1alpha1.K6Spec) *CLI {
 					if args[j] == "cloud" {
 						cli.HasCloudOut = true
 					} else {
-                                          args[j] = args[j]+os.Hostname()
+                                          str, err := os.Hostname()
+                                         fmt.Printf("err: %T, %v\n", err, err) 
+                                          args[j] = args[j]+str
 					}
 				}
 			case "-l", "--linger", "--no-usage-report":
