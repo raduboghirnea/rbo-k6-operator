@@ -93,5 +93,5 @@ func (r *K6Reconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
 		For(&v1alpha1.K6{}).
 		Owns(&batchv1.Job{}).
-		Complete(r)
+	//	Complete(r)
 }
