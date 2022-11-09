@@ -90,9 +90,8 @@ func (r *K6Reconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 
 // SetupWithManager sets up a managed controller that will reconcile all events for the K6 CRD
 func (r *K6Reconciler) SetupWithManager(mgr ctrl.Manager) error {
-	return nil
-	//ctrl.NewControllerManagedBy(mgr).
-	//	For(&v1alpha1.K6{}).
-	//	Owns(&batchv1.Job{}).
-	//	Complete(r)
+	return	ctrl.NewControllerManagedBy(mgr).
+		For(&v1alpha1.K6{}).
+		Owns(&batchv1.Job{}).
+		Complete(r)
 }
