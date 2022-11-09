@@ -3,7 +3,6 @@ package controllers
 import (
 	"context"
 	"fmt"
-        "strconv"
 	"github.com/go-logr/logr"
 	"github.com/raduboghirnea/rbo-k6-operator/api/v1alpha1"
 	"github.com/raduboghirnea/rbo-k6-operator/pkg/resources/jobs"
