@@ -94,4 +94,4 @@ func (r *K6Reconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 //		For(&v1alpha1.K6{}).
 //		Owns(&batchv1.Job{}).
 //		Complete(r)
-}
+//}
