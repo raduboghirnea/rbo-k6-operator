@@ -69,7 +69,7 @@ func launchTest(ctx context.Context, k6 *v1alpha1.K6, index int, log logr.Logger
         comand := job.Spec.Template.Spec.Containers[0].Command
 	log.Info(fmt.Sprintf("Runner job is ready to start with image `%s` and command `%s`",
 		job.Spec.Template.Spec.Containers[0].Image, comand))
-        log.Info(fmt.Sprintf("RADUBO DEBUG : comand is : %s",comand[0]))
+        log.Info(fmt.Sprintf("RADUBO DEBUG : comand is : %s_%s_%s_%s_%s_%s_%s_%s\n",comand[0],comand[1],comand[2],comand[3],comand[4],comand[5],comand[6],comand[7],comand[8]))
 	if err = ctrl.SetControllerReference(k6, job, r.Scheme); err != nil {
 		log.Error(err, "Failed to set controller reference for job")
 		return err
