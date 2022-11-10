@@ -66,13 +66,13 @@ func launchTest(ctx context.Context, k6 *v1alpha1.K6, index int, log logr.Logger
 		log.Error(err, "Failed to generate k6 test job")
 		return err
 	}
-        job.Spec.Template.Spec.Containers[0].Command[7]+=job.Spec.Template.Spec.Containers[0].Command[12] 
+        job.Spec.Template.Spec.Containers[0].Command[6]+=job.Spec.Template.Spec.Containers[0].Command[11] 
 	comand := job.Spec.Template.Spec.Containers[0].Command
 
 	log.Info(fmt.Sprintf("Runner job is ready to start with image `%s` and command `%s`",
 		job.Spec.Template.Spec.Containers[0].Image, comand))
        
-		log.Info(fmt.Sprintf("RADUBO DEBUG : comand is : %s_%s\n",comand[7],comand[12]))
+		log.Info(fmt.Sprintf("RADUBO DEBUG : comand is : %s_%s\n",comand[6],comand[11]))
 
 
 	if err = ctrl.SetControllerReference(k6, job, r.Scheme); err != nil {
