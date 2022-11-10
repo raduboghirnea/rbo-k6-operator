@@ -11,6 +11,7 @@ import (
 	"k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/types"
 	ctrl "sigs.k8s.io/controller-runtime"
+	"strconv"
 )
 
 // CreateJobs creates jobs that will spawn k6 pods for distributed test
@@ -66,7 +67,7 @@ func launchTest(ctx context.Context, k6 *v1alpha1.K6, index int, log logr.Logger
 		log.Error(err, "Failed to generate k6 test job")
 		return err
 	}
-        job.Spec.Template.Spec.Containers[0].Command[6]+=job.Spec.Template.Spec.Containers[0].Command[11] 
+        job.Spec.Template.Spec.Containers[0].Command[6]+=strconv.Itoa(index)
 	comand := job.Spec.Template.Spec.Containers[0].Command
 
 	log.Info(fmt.Sprintf("Runner job is ready to start with image `%s` and command `%s`",
