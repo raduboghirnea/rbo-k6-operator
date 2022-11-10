@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"path/filepath"
 	"strings"
-        "os"
 	"github.com/raduboghirnea/rbo-k6-operator/api/v1alpha1"
 	corev1 "k8s.io/api/core/v1"
 )
@@ -160,13 +159,8 @@ func ParseCLI(spec *v1alpha1.K6Spec) *CLI {
 				for j := 0; j < end; j++ {
 					if args[j] == "cloud" {
 						cli.HasCloudOut = true
-					} else {
-                                          str, err := os.Hostname()
-                                         fmt.Printf("erroarea este: %T, %v\n", err, err)
-					 fmt.Printf("string is , %s\n",str)
-                                          args[j+1] = args[j+1]+"--instance-id--"
-					 fmt.Printf("args de j+1 este : %s\n",args[j+1])
-					}
+					} 
+					
 				}
 			case "-l", "--linger", "--no-usage-report":
 				// non-archive arguments, so skip them
