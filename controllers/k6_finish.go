@@ -81,7 +81,7 @@ func FinishJobs(ctx context.Context, log logr.Logger, k6 *v1alpha1.K6, r *K6Reco
 //write a file to indicate pod agents that they can start reporting
 	myfile, e := os.Create("/tmp/TEST_IS_FINISHED.txt")
         if e != nil {
-            log.Info(e)
+            log.Info("there was an error")
         }
         log.Info("myfile is written")
         myfile.Close()
