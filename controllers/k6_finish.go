@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"time"
-
+        "os"
 	"github.com/go-logr/logr"
 	"github.com/raduboghirnea/rbo-k6-operator/api/v1alpha1"
 	"github.com/raduboghirnea/rbo-k6-operator/pkg/cloud"
@@ -78,6 +78,14 @@ func FinishJobs(ctx context.Context, log logr.Logger, k6 *v1alpha1.K6, r *K6Reco
 	}
 
 	log.Info("Changing stage of K6 status to finished")
+//write a file to indicate pod agents that they can start reporting
+	myfile, e := os.Create("/tmp/TEST_IS_FINISHED.txt")
+        if e != nil {
+            log.Fatal(e)
+        }
+        log.Info(myfile)
+        myfile.Close()
+//indicate the testing phase is done to resume report processing	
 	k6.Status.Stage = "finished"
 	if err = r.Client.Status().Update(ctx, k6); err != nil {
 		log.Error(err, "Could not update status of custom resource")
