@@ -25,6 +25,10 @@ spec:
         control-plane: controller-manager
     spec:
       serviceAccount: k6-operator-controller
+      volumes:
+        - name: azure
+          persistentVolumeClaim:
+            claimName: fileazure
       containers:
         - command:
             - /manager
@@ -32,6 +36,9 @@ spec:
             - --enable-leader-election
           image: controller:latest
           name: manager
+          volumeMounts:
+            - name: azure
+              mounthPath: /test
           resources:
             limits:
               cpu: 100m
